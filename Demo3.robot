@@ -4,7 +4,7 @@ Library    Selenium2Library
 Library    libEdit.Locator
 
 Resource    config.txt
-Resource    resource.robot
+Resource    resource_1.robot
 
 *** Test Case ***
 [TC-001] - Multiple Browsers
