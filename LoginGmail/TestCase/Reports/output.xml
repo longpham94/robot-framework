@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180615 14:00:35.146" generator="Robot 3.0.4 (Python 2.7.14 on win32)">
+<suite source="D:\SWAT\Robot_Framework\LoginGmail\TestCase\Demo.robot" id="s1" name="Demo">
+<test id="s1-t1" name="[TC-001]-Login Gmail with valid information">
+<kw name="Open Page" library="resource">
+<arguments>
+<arg>${URL}</arg>
+<arg>${browser}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${browser}</arg>
+</arguments>
+<msg timestamp="20180615 14:00:35.353" level="INFO">Opening browser 'Chrome' to base url 'http://mail.google.com'.</msg>
+<status status="PASS" endtime="20180615 14:00:45.144" starttime="20180615 14:00:35.353"></status>
+</kw>
+<kw name="Get Webdriver Instance" library="Lib">
+<assign>
+<var>${d1}</var>
+</assign>
+<msg timestamp="20180615 14:00:45.144" level="INFO">${d1} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="fb0c51642eaf4804d166093288632b67")&gt;</msg>
+<status status="PASS" endtime="20180615 14:00:45.144" starttime="20180615 14:00:45.144"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${d1}</arg>
+<arg>${d1}</arg>
+</arguments>
+<msg timestamp="20180615 14:00:45.144" level="INFO">${d1} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="fb0c51642eaf4804d166093288632b67")&gt;</msg>
+<status status="PASS" endtime="20180615 14:00:45.145" starttime="20180615 14:00:45.144"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${d1}</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:00:45.145" starttime="20180615 14:00:45.145"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:00:45.145" starttime="20180615 14:00:35.352"></status>
+</kw>
+<kw name="Login" library="resource">
+<arguments>
+<arg>${user}</arg>
+<arg>${valid_pass}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@type='email']</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20180615 14:00:45.146" level="INFO">Typing text 'demorobotframework' into text field 'xpath=//*[@type='email']'.</msg>
+<status status="PASS" endtime="20180615 14:00:45.353" starttime="20180615 14:00:45.146"></status>
+</kw>
+<kw name="Press Key" library="Selenium2Library">
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@type='email']</arg>
+<arg>\\13</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:00:45.537" starttime="20180615 14:00:45.354"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//*[@type='password']</arg>
+<arg>20 Seconds</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:00:46.276" starttime="20180615 14:00:45.537"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@type='password']</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20180615 14:00:46.276" level="INFO">Typing text '12345678x@X' into text field 'xpath=//*[@type='password']'.</msg>
+<status status="PASS" endtime="20180615 14:00:46.424" starttime="20180615 14:00:46.276"></status>
+</kw>
+<kw name="Send Special Key" library="Lib">
+<arguments>
+<arg>${d1}</arg>
+<arg>xpath</arg>
+<arg>//*[@type='password']</arg>
+<arg>ENTER</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:00:46.481" starttime="20180615 14:00:46.424"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:00:46.482" starttime="20180615 14:00:45.145"></status>
+</kw>
+<kw name="Check Login" library="resource">
+<arguments>
+<arg>${EXPECTED_URL}</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10 Seconds</arg>
+</arguments>
+<msg timestamp="20180615 14:00:56.486" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20180615 14:00:56.486" starttime="20180615 14:00:46.486"></status>
+</kw>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${current_URL}</var>
+</assign>
+<msg timestamp="20180615 14:00:56.526" level="INFO">${current_URL} = https://mail.google.com/mail/#inbox</msg>
+<status status="PASS" endtime="20180615 14:00:56.526" starttime="20180615 14:00:56.486"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${current_URL}'== '${URL}'</arg>
+<arg>Log To Console</arg>
+<arg>"Log in Success"</arg>
+<arg>ELSE</arg>
+<arg>Log To Console</arg>
+<arg>"Log In Failed"</arg>
+</arguments>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>"Log in Success"</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:00:56.527" starttime="20180615 14:00:56.527"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:00:56.527" starttime="20180615 14:00:56.526"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:00:56.527" starttime="20180615 14:00:46.485"></status>
+</kw>
+<kw name="Clean Up" library="resource">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20180615 14:00:59.616" starttime="20180615 14:00:56.528"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:00:59.616" starttime="20180615 14:00:56.528"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:00:59.618" critical="yes" starttime="20180615 14:00:35.352"></status>
+</test>
+<test id="s1-t2" name="[TC-002]-Login Gmail with invalid information">
+<kw name="Open Page" library="resource">
+<arguments>
+<arg>${URL}</arg>
+<arg>${browser}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${browser}</arg>
+</arguments>
+<msg timestamp="20180615 14:00:59.627" level="INFO">Opening browser 'Chrome' to base url 'http://mail.google.com'.</msg>
+<status status="PASS" endtime="20180615 14:01:08.737" starttime="20180615 14:00:59.626"></status>
+</kw>
+<kw name="Get Webdriver Instance" library="Lib">
+<assign>
+<var>${d1}</var>
+</assign>
+<msg timestamp="20180615 14:01:08.738" level="INFO">${d1} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="39b939be59ba3ef4e2f664962fbec3bf")&gt;</msg>
+<status status="PASS" endtime="20180615 14:01:08.738" starttime="20180615 14:01:08.737"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${d1}</arg>
+<arg>${d1}</arg>
+</arguments>
+<msg timestamp="20180615 14:01:08.738" level="INFO">${d1} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="39b939be59ba3ef4e2f664962fbec3bf")&gt;</msg>
+<status status="PASS" endtime="20180615 14:01:08.738" starttime="20180615 14:01:08.738"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${d1}</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:01:08.740" starttime="20180615 14:01:08.739"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:01:08.740" starttime="20180615 14:00:59.625"></status>
+</kw>
+<kw name="Login" library="resource">
+<arguments>
+<arg>${user}</arg>
+<arg>${invalid_pass}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@type='email']</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20180615 14:01:08.742" level="INFO">Typing text 'demorobotframework' into text field 'xpath=//*[@type='email']'.</msg>
+<status status="PASS" endtime="20180615 14:01:08.935" starttime="20180615 14:01:08.742"></status>
+</kw>
+<kw name="Press Key" library="Selenium2Library">
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@type='email']</arg>
+<arg>\\13</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:01:08.992" starttime="20180615 14:01:08.935"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//*[@type='password']</arg>
+<arg>20 Seconds</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:01:09.718" starttime="20180615 14:01:08.992"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@type='password']</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20180615 14:01:09.719" level="INFO">Typing text '12345678' into text field 'xpath=//*[@type='password']'.</msg>
+<status status="PASS" endtime="20180615 14:01:09.835" starttime="20180615 14:01:09.719"></status>
+</kw>
+<kw name="Send Special Key" library="Lib">
+<arguments>
+<arg>${d1}</arg>
+<arg>xpath</arg>
+<arg>//*[@type='password']</arg>
+<arg>ENTER</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:01:09.902" starttime="20180615 14:01:09.835"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:01:09.902" starttime="20180615 14:01:08.741"></status>
+</kw>
+<kw name="Check Login" library="resource">
+<arguments>
+<arg>${EXPECTED_URL_1}</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10 Seconds</arg>
+</arguments>
+<msg timestamp="20180615 14:01:19.905" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20180615 14:01:19.905" starttime="20180615 14:01:09.903"></status>
+</kw>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${current_URL}</var>
+</assign>
+<msg timestamp="20180615 14:01:19.916" level="INFO">${current_URL} = https://accounts.google.com/signin/v2/sl/pwd?service=mail&amp;passive=true&amp;rm=false&amp;continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&amp;ss=1&amp;scc=1&amp;ltmpl=default&amp;ltmplcache=2&amp;emr=1&amp;osid=1&amp;flowName=GlifWebSign...</msg>
+<status status="PASS" endtime="20180615 14:01:19.916" starttime="20180615 14:01:19.905"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${current_URL}'== '${URL}'</arg>
+<arg>Log To Console</arg>
+<arg>"Log in Success"</arg>
+<arg>ELSE</arg>
+<arg>Log To Console</arg>
+<arg>"Log In Failed"</arg>
+</arguments>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>"Log In Failed"</arg>
+</arguments>
+<status status="PASS" endtime="20180615 14:01:19.916" starttime="20180615 14:01:19.916"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:01:19.916" starttime="20180615 14:01:19.916"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:01:19.916" starttime="20180615 14:01:09.903"></status>
+</kw>
+<kw name="Clean Up" library="resource">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20180615 14:01:22.975" starttime="20180615 14:01:19.918"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:01:22.976" starttime="20180615 14:01:19.917"></status>
+</kw>
+<status status="PASS" endtime="20180615 14:01:22.977" critical="yes" starttime="20180615 14:00:59.622"></status>
+</test>
+<status status="PASS" endtime="20180615 14:01:22.983" starttime="20180615 14:00:35.149"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Demo" pass="2">Demo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
