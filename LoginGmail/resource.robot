@@ -12,10 +12,10 @@ Login    [Arguments]    ${user}    ${pass}
     Input Text    xpath=//*[@type='password']    ${pass}
     send_special_key    ${d1}    xpath    //*[@type='password']    ENTER
 
-Check Login    [Arguments]    ${URL}
-    Sleep    10 Seconds
-    ${current_URL} =    Get Location     
-    Run Keyword If  '${current_URL}'== '${URL}'  Log To Console  "Log in Success"    ELSE    Log To Console  "Log In Failed" 
+#Check Login    [Arguments]    ${URL}
+#    Sleep    10 Seconds
+#    ${current_URL} =    Get Location     
+#    Run Keyword If  '${current_URL}'== '${URL}'  Log To Console  "Log in Success"    ELSE    Log To Console  "Log In Failed" 
 
 Clean Up
     Close Browser
