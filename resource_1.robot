@@ -1,7 +1,7 @@
 *** Keywords ***
 Open Browser1   [Arguments]    ${Link}
     # ${d1} =    create_remote    ${URL}    ${remoteHost}    ${browser}.
-    Open Browser    ${URL}    ${browser}
+    Open Browser    ${URL1}    ${browser}
     Maximize Browser Window
     ${d1} =    Get webdriver instance
     # ${d1} =    create_driver    ${URL}    ${browser}
@@ -18,7 +18,7 @@ Search Browser1    [Arguments]    ${driver}    ${keyword}
     tearDown    ${d1}
 
 Open Browser2    [Arguments]    ${Link}
-    # ${d2} =    create_remote    ${URL}    ${remoteHost}    ${browser}
+    # ${d2} =    create_remote    ${URL1}    ${remoteHost}    ${browser}
     ${d2} =    create_driver    ${URL}    ${browser}
     Set Global Variable    ${d2}    ${d2}
     Log To Console    ${d2}
