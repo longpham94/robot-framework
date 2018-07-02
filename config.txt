@@ -1,0 +1,13 @@
+*** Variables ***
+
+${URL1}            https://www.google.com/
+${remoteHost}      http://192.168.35.49:4444/wd/hub
+${d1}
+${d2}
+${URL2}            http://mail.google.com
+${browser}         Chrome
+${user}            lttp941010
+${valid_pass}      longpham1
+${invalid_pass}    12345678
+${EXPECTED_URL}    https://mail.google.com/mail/u/0/#inbox
+${EXPECTED_URL_1}  https://accounts.google.com/signin
